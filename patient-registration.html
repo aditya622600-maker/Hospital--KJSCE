@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Patient Registration</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="form.css">
+</head>
+
+<body>
+
+<header>
+    <h3> Urine Analysis Portal</h3>
+    <nav>
+        <p>
+            <a href="index.html">← Return to Home</a> | 
+            <a href="navigation.html">Navigation Menu</a> | 
+            <a href="urine-strip.html">Interactive Test Strip</a> | 
+            <a href="test-parameters.html">Test Parameters</a>
+        </p>
+    </nav>
+    <hr>
+</header>
+
+<center>
+<h1>NEW PATIENT REGISTRATION</h1>
+
+<form action="patient-report.html" method="GET">
+
+<table cellpadding="8">
+
+<tr>
+<td>
+<label for="pname">Patient Name</label><br>
+<input type="text" id="pname" name="pname" placeholder="Patient Name" required>
+</td>
+
+<td>
+<label for="pid">Patient ID</label><br>
+<input type="text" id="pid" name="pid" placeholder="e.g., P-1001" required>
+</td>
+</tr>
+
+<tr>
+<td>
+<label for="age">Age</label><br>
+<input type="number" id="age" name="age" placeholder="Age" min="1" max="120">
+</td>
+
+<td>
+<label for="testdate">Test Date</label><br>
+<input type="date" id="testdate" name="testdate">
+</td>
+</tr>
+
+<tr>
+<td>
+<label for="gender">Gender</label><br>
+<select id="gender" name="gender">
+<option value="male">Male</option>
+<option value="female">Female</option>
+<option value="other">Other</option>
+</select>
+</td>
+
+<td>
+<label for="docname">Doctor Name</label><br>
+<input type="text" id="docname" name="docname" placeholder="Doctor Name">
+</td>
+</tr>
+
+<tr>
+<td>
+<label for="mobile">Mobile Number</label><br>
+<input type="tel" id="mobile" name="mobile" placeholder="Mobile Number">
+</td>
+
+<td rowspan="2">
+
+<fieldset>
+<legend>Symptoms</legend>
+<input type="checkbox" name="symptoms" value="fever"> Fever<br>
+<input type="checkbox" name="symptoms" value="painful-urination"> Painful Urination<br>
+<input type="checkbox" name="symptoms" value="cloudy-urine"> Cloudy Urine<br>
+<input type="checkbox" name="symptoms" value="lower-back-pain"> Lower Back Pain<br>
+<input type="checkbox" name="symptoms" value="frequent-urination"> Frequent Urination<br>
+<input type="checkbox" name="symptoms" value="blood-in-urine"> Blood in Urine<br>
+<input type="checkbox" name="symptoms" value="none"> None
+</fieldset>
+
+</td>
+</tr>
+
+<tr>
+<td>
+<label for="email">Email</label><br>
+<input type="email" id="email" name="email" placeholder="Email">
+</td>
+</tr>
+
+<tr>
+<td colspan="2">
+
+<label>Preferred Report Format</label><br>
+
+<input type="radio" name="report" value="email-pdf"> Email PDF
+<input type="radio" name="report" value="portal-view" checked> Portal View
+<input type="radio" name="report" value="print-copy"> Print Copy
+
+</td>
+</tr>
+
+<tr>
+<td align="center">
+<input type="reset" value="Reset Form">
+</td>
+
+<td align="center">
+<input type="submit" value="Submit Registration">
+</td>
+</tr>
+
+</table>
+
+</form>
+</center>
+
+<hr>
+
+<footer>
+<center>
+    <p>
+        <a href="navigation.html"> Navigation Menu</a> | 
+        <a href="patient-report.html">View Patient Reports </a>
+    </p>
+    <p> 2026 ABC Hospital</p>
+</center>
+</footer>
+
+</body>
+</html>

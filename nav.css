@@ -1,0 +1,35 @@
+//task 6
+
+.nav-gallery ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    list-style: none;
+    padding: 0;
+    margin: 15px 0;
+}
+
+.nav-gallery li {
+    width: 160px;
+    height: 55px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid #003366;
+    border-radius: 6px;
+    background-color: #ffffff;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-gallery li:hover {
+    transform: scale(1.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.nav-gallery li a {
+    text-decoration: none;
+    color: #003366;
+    font-weight: bold;
+    text-align: center;
+}
