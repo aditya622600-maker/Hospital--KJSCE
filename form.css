@@ -1,0 +1,62 @@
+
+
+input[type="text"],
+input[type="number"],
+input[type="date"],
+input[type="tel"],
+input[type="email"],
+select {
+    width: 90%;
+    padding: 8px;
+    margin-top: 4px;
+    border: 1px solid #cccccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+input:focus,
+select:focus {
+    outline: none;
+    border-color: #003366;
+    box-shadow: 0 0 5px rgba(0, 51, 102, 0.5);
+}
+
+input[type="submit"] {
+    background-color: #003366;
+    color: #ffffff;
+    border: none;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+    font-weight: bold;
+}
+
+input[type="submit"]:hover {
+    background-color: #ffd700;
+    color: #003366;
+}
+
+input[type="reset"] {
+    background-color: #eeeeee;
+    border: 1px solid #cccccc;
+    padding: 10px 25px;
+    border-radius: 6px;
+    cursor: pointer;
+}
+
+input[type="reset"]:hover {
+    background-color: #dddddd;
+}
+
+fieldset {
+    border: 2px solid #003366;
+    border-radius: 8px;
+    padding: 15px;
+    margin-top: 10px;
+}
+
+legend {
+    font-weight: bold;
+    color: #003366;
+    padding: 0 8px;
+}
