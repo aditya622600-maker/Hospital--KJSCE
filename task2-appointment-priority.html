@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Priority</title>
+  <link rel="stylesheet" href="experiment5.css">
+</head>
+<body>
+  <h1>Patient Appointment Priority</h1>
+  <form id="priorityForm">
+    <fieldset>
+      <legend>Appointment Details</legend>
+      <label for="age">Patient Age</label>
+      <input type="number" id="age" name="age" min="0" required>
+      <label for="temperature">Temperature (°C)</label>
+      <input type="number" id="temperature" name="temperature" step="0.1" required>
+      <label for="symptoms">Symptoms</label>
+      <input type="text" id="symptoms" name="symptoms" required>
+      <label for="severity">Severity Level</label>
+      <select id="severity" name="severity" required>
+        <option value="">Select severity</option>
+        <option value="Mild">Mild</option>
+        <option value="Moderate">Moderate</option>
+        <option value="Severe">Severe</option>
+      </select>
+      <label for="emergency">Emergency Status</label>
+      <select id="emergency" name="emergency" required>
+        <option value="">Select status</option>
+        <option value="Yes">Yes</option>
+        <option value="No">No</option>
+      </select>
+      <button type="submit">Check Priority</button>
+    </fieldset>
+  </form>
+  <p id="error" class="error"></p>
+  <p id="result"></p>
+  <script src="task2-appointment-priority.js"></script>
+</body>
+</html>
