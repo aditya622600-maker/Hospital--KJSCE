@@ -26,6 +26,17 @@
     }
     .error { color: red; }
     .invalid { border: 2px solid red; }
+    .success {
+      display: none;
+      padding: 12px 14px;
+      margin-top: 16px;
+      border: 1px solid #a8d8bf;
+      border-radius: 6px;
+      background: #edf8f1;
+      color: #17633a;
+      font-weight: bold;
+    }
+    .success.visible { display: block; }
   </style>
 </head>
 <body>
@@ -96,6 +107,7 @@
       <button type="reset">Reset</button>
     </fieldset>
   </form>
+  <p id="successMessage" class="success" role="status" aria-live="polite"></p>
 
   <script src="registration.js"></script>
 </body>

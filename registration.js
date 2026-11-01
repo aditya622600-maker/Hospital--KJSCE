@@ -12,6 +12,9 @@ function clearErrors() {
   document.querySelectorAll(".invalid").forEach(function (element) {
     element.classList.remove("invalid");
   });
+  const successMessage = document.getElementById("successMessage");
+  successMessage.textContent = "";
+  successMessage.classList.remove("visible");
 }
 
 form.addEventListener("submit", function (event) {
@@ -76,7 +79,9 @@ form.addEventListener("submit", function (event) {
   }
 
   if (isValid) {
-    form.submit();
+    const successMessage = document.getElementById("successMessage");
+    successMessage.textContent = "Submitted successfully. Your patient registration is complete.";
+    successMessage.classList.add("visible");
   }
 });
 

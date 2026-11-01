@@ -3,30 +3,105 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Patient Registration Validation</title>
+  <title>Patient Registration | KJS Healthcare</title>
   <link rel="stylesheet" href="experiment5.css">
 </head>
 <body>
-  <h1>Patient Registration Validation</h1>
-  <form id="registrationForm" novalidate>
-    <fieldset>
-      <legend>Registration Details</legend>
-      <label for="patientName">Patient Name</label>
-      <input type="text" id="patientName" name="patientName">
-      <span id="patientNameError" class="error"></span>
-      <label for="mobile">Mobile Number</label>
-      <input type="tel" id="mobile" name="mobile">
-      <span id="mobileError" class="error"></span>
-      <label for="patientId">Patient ID</label>
-      <input type="text" id="patientId" name="patientId" placeholder="PAT-1234">
-      <span id="patientIdError" class="error"></span>
-      <label for="email">Email</label>
-      <input type="email" id="email" name="email">
-      <span id="emailError" class="error"></span>
-      <button type="submit">Register</button>
-    </fieldset>
-  </form>
-  <p id="successMessage" class="success"></p>
+  <main class="page-shell">
+    <header class="page-header">
+      <p class="eyebrow">KJS Healthcare Hospital · Patient Portal</p>
+      <h1>Patient Registration</h1>
+      <p>Enter your details to create a patient record and request an appointment.</p>
+    </header>
+
+    <form id="registrationForm" novalidate>
+      <fieldset>
+        <legend>Patient details</legend>
+        <div class="form-grid">
+          <div class="field">
+            <label for="patientName">Patient name</label>
+            <input type="text" id="patientName" name="patientName" autocomplete="name" placeholder="e.g. Asha Mehta">
+            <span id="patientNameError" class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="patientId">Patient ID</label>
+            <input type="text" id="patientId" name="patientId" placeholder="PID-001">
+            <span id="patientIdError" class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="mobile">Mobile number</label>
+            <input type="tel" id="mobile" name="mobile" inputmode="numeric" autocomplete="tel" placeholder="10-digit number">
+            <span id="mobileError" class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="email">Email address</label>
+            <input type="email" id="email" name="email" autocomplete="email" placeholder="name@example.com">
+            <span id="emailError" class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="dateOfBirth">Date of birth</label>
+            <input type="date" id="dateOfBirth" name="dateOfBirth">
+            <span id="dateOfBirthError" class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="gender">Gender</label>
+            <select id="gender" name="gender">
+              <option value="">Select gender</option>
+              <option>Female</option><option>Male</option><option>Other</option><option>Prefer not to say</option>
+            </select>
+            <span id="genderError" class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="bloodGroup">Blood group</label>
+            <select id="bloodGroup" name="bloodGroup">
+              <option value="">Select blood group</option>
+              <option>A+</option><option>A-</option><option>B+</option><option>B-</option>
+              <option>AB+</option><option>AB-</option><option>O+</option><option>O-</option>
+            </select>
+            <span id="bloodGroupError" class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="emergencyContact">Emergency contact</label>
+            <input type="tel" id="emergencyContact" name="emergencyContact" inputmode="numeric" placeholder="10-digit number">
+            <span id="emergencyContactError" class="error" aria-live="polite"></span>
+          </div>
+          <div class="field field-wide">
+            <label for="address">Address</label>
+            <textarea id="address" name="address" rows="2" autocomplete="street-address" placeholder="House, street, area and city"></textarea>
+            <span id="addressError" class="error" aria-live="polite"></span>
+          </div>
+        </div>
+      </fieldset>
+
+      <fieldset>
+        <legend>Appointment</legend>
+        <div class="form-grid">
+          <div class="field">
+            <label for="department">Department</label>
+            <select id="department" name="department">
+              <option value="">Select department</option>
+              <option>General Medicine</option><option>Cardiology</option><option>Dermatology</option><option>Orthopedics</option>
+            </select>
+            <span id="departmentError" class="error" aria-live="polite"></span>
+          </div>
+          <div class="field">
+            <label for="appointmentDate">Appointment date</label>
+            <input type="date" id="appointmentDate" name="appointmentDate">
+            <span id="appointmentDateError" class="error" aria-live="polite"></span>
+          </div>
+        </div>
+      </fieldset>
+
+      <div class="form-actions">
+        <button type="reset" class="button-secondary">Clear form</button>
+        <button type="submit" class="button-primary">Submit registration</button>
+      </div>
+    </form>
+    <p id="successMessage" class="success" role="status" aria-live="polite"></p>
+    <p class="privacy-note">Your information is collected for patient registration and appointment scheduling.</p>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="task5-registration-validation.js"></script>
 </body>
 </html>

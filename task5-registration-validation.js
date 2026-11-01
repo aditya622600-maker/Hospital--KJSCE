@@ -1,51 +1,64 @@
-function validateName(name) {
-  return /^[A-Za-z ]+$/.test(name.trim());
-}
+$(function () {
+  const $form = $("#registrationForm");
+  const today = new Date();
+  const todayValue = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, "0"), String(today.getDate()).padStart(2, "0")].join("-");
 
-function validateMobile(mobile) {
-  return /^\d{10}$/.test(mobile.trim());
-}
+  // Keep date choices meaningful and prevent selecting a future birth date or past appointment.
+  $("#dateOfBirth").attr("max", todayValue);
+  $("#appointmentDate").attr("min", todayValue);
 
-function validatePatientId(patientId) {
-  return /^PAT-\d{4}$/.test(patientId.trim());
-}
+  function setError(fieldId, message) {
+    $("#" + fieldId).addClass("invalid").attr("aria-invalid", "true");
+    $("#" + fieldId + "Error").text(message);
+  }
 
-function validateEmail(email) {
-  return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email.trim());
-}
+  function clearErrors() {
+    $(".error").text("");
+    $("#registrationForm .invalid").removeClass("invalid").removeAttr("aria-invalid");
+    $("#successMessage").text("").removeClass("visible");
+  }
 
-document.getElementById("registrationForm").addEventListener("submit", function (event) {
-  event.preventDefault();
-
-  const patientName = document.getElementById("patientName").value;
-  const mobile = document.getElementById("mobile").value;
-  const patientId = document.getElementById("patientId").value;
-  const email = document.getElementById("email").value;
-  let isValid = true;
-
-  document.querySelectorAll(".error").forEach(function (element) {
-    element.textContent = "";
+  $form.on("input change", "input, select, textarea", function () {
+    $(this).removeClass("invalid").removeAttr("aria-invalid");
+    $("#" + this.id + "Error").text("");
+    $("#successMessage").text("").removeClass("visible");
   });
-  document.getElementById("successMessage").textContent = "";
 
-  if (!validateName(patientName)) {
-    document.getElementById("patientNameError").textContent = " Enter alphabets and spaces only.";
-    isValid = false;
-  }
-  if (!validateMobile(mobile)) {
-    document.getElementById("mobileError").textContent = " Enter exactly 10 digits.";
-    isValid = false;
-  }
-  if (!validatePatientId(patientId)) {
-    document.getElementById("patientIdError").textContent = " Use the format PAT-1234.";
-    isValid = false;
-  }
-  if (!validateEmail(email)) {
-    document.getElementById("emailError").textContent = " Enter a valid email address.";
-    isValid = false;
-  }
+  $form.on("submit", function (event) {
+    event.preventDefault();
+    clearErrors();
 
-  if (isValid) {
-    document.getElementById("successMessage").textContent = "Registration successful.";
-  }
+    const value = id => $.trim($("#" + id).val() || "");
+    const checks = [
+      ["patientName", value("patientName") !== "" && /^[A-Za-z ]+$/.test(value("patientName")), "Enter a name using letters and spaces only."],
+      ["patientId", /^PID-\d{3}$/.test(value("patientId")), "Use the format PID-001."],
+      ["mobile", /^[6-9]\d{9}$/.test(value("mobile")), "Enter a valid 10-digit Indian mobile number."],
+      ["email", /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value("email")), "Enter a valid email address."],
+      ["dateOfBirth", value("dateOfBirth") !== "" && value("dateOfBirth") <= todayValue, "Enter a valid date of birth that is not in the future."],
+      ["gender", value("gender") !== "", "Select a gender."],
+      ["bloodGroup", value("bloodGroup") !== "", "Select a blood group."],
+      ["address", value("address") !== "", "Address is required."],
+      ["emergencyContact", /^[6-9]\d{9}$/.test(value("emergencyContact")), "Enter a valid 10-digit Indian emergency contact."],
+      ["department", value("department") !== "", "Select a department."],
+      ["appointmentDate", value("appointmentDate") !== "" && value("appointmentDate") >= todayValue, "Choose today or a future appointment date."]
+    ];
+
+    let isValid = true;
+    $.each(checks, function (_, check) {
+      if (!check[1]) {
+        setError(check[0], check[2]);
+        isValid = false;
+      }
+    });
+
+    if (isValid) {
+      $("#successMessage").text("Registration details are valid. Your patient registration is ready.").addClass("visible");
+    } else {
+      $(".invalid").first().trigger("focus");
+    }
+  });
+
+  $form.on("reset", function () {
+    window.setTimeout(clearErrors, 0);
+  });
 });
