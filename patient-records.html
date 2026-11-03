@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registered Patients | KJS Healthcare</title>
+  <link rel="stylesheet" href="experiment5.css">
+</head>
+<body>
+  <main class="page-shell">
+    <header class="page-header">
+      <p class="eyebrow">KJS Healthcare Hospital · Patient Portal</p>
+      <h1>Registered Patients</h1>
+      <p>Review all patient registrations submitted from this browser.</p>
+    </header>
+
+    <section class="registrations" aria-labelledby="registrationsTitle">
+      <div class="registrations-header">
+        <h2 id="registrationsTitle">Patient records</h2>
+        <button type="button" id="clearRegistrations" class="button-secondary">Clear records</button>
+      </div>
+      <div class="table-wrapper" tabindex="0">
+        <table>
+          <caption class="sr-only">Registered patient details</caption>
+          <thead>
+            <tr>
+              <th scope="col">Patient</th>
+              <th scope="col">Contact</th>
+              <th scope="col">Date of birth</th>
+              <th scope="col">Gender</th>
+              <th scope="col">Blood group</th>
+              <th scope="col">Address</th>
+              <th scope="col">Emergency contact</th>
+              <th scope="col">Department</th>
+              <th scope="col">Appointment date</th>
+            </tr>
+          </thead>
+          <tbody id="registrationsBody"></tbody>
+        </table>
+        <p id="emptyRegistrations" class="empty-registrations">No patient registrations have been submitted yet.</p>
+      </div>
+    </section>
+
+    <p class="records-link"><a href="task5-registration-validation.html">Register another patient</a></p>
+  </main>
+
+  <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+  <script src="patient-records.js"></script>
+</body>
+</html>

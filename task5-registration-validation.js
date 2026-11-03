@@ -1,5 +1,6 @@
 $(function () {
   const $form = $("#registrationForm");
+  const storageKey = "kjsHealthcareRegistrations";
   const today = new Date();
   const todayValue = [today.getFullYear(), String(today.getMonth() + 1).padStart(2, "0"), String(today.getDate()).padStart(2, "0")].join("-");
 
@@ -52,7 +53,24 @@ $(function () {
     });
 
     if (isValid) {
-      $("#successMessage").text("Registration details are valid. Your patient registration is ready.").addClass("visible");
+      const registration = {};
+      $.each($form.serializeArray(), function (_, field) {
+        registration[field.name] = $.trim(field.value);
+      });
+
+      let registrations = [];
+      try {
+        const savedRegistrations = JSON.parse(localStorage.getItem(storageKey) || "[]");
+        registrations = Array.isArray(savedRegistrations) ? savedRegistrations : [];
+      } catch (error) {
+        registrations = [];
+      }
+      registrations.push(registration);
+      localStorage.setItem(storageKey, JSON.stringify(registrations));
+      this.reset();
+      window.setTimeout(function () {
+        $("#successMessage").html('Registration submitted successfully. <a href="patient-records.html">View registered patient records</a>.').addClass("visible");
+      }, 0);
     } else {
       $(".invalid").first().trigger("focus");
     }
